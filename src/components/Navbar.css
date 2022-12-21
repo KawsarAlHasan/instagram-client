@@ -1,0 +1,14 @@
+.logo {
+  font-family: 'Dancing Script', cursive;
+  color: black;
+  font-weight: lighter;
+  font-size: large;
+}
+
+.c-drop-down {
+  margin: 100px 0 0 -18px;
+}
+
+.more {
+  margin: 0 0 0 10px;
+}
