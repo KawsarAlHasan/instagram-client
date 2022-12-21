@@ -10,7 +10,7 @@ function App() {
         <div className="md:col-span-2 hidden md:block">
           <NavbarTop />
         </div>
-        <div className="col-span-12 md:col-span-10 a">
+        <div className="col-span-12 md:col-span-10">
           <Home />
         </div>
       </div>
