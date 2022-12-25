@@ -1,7 +1,16 @@
+import { signOut } from 'firebase/auth'
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { Link } from 'react-router-dom'
+import auth from '../firebase.init'
 import './Navbar.css'
 
 function NavbarT() {
+  const [user] = useAuthState(auth)
+
+  const handleSignOut = () => {
+    signOut(auth)
+  }
   return (
     <div>
       <div className="my-8 flex justify-center">
@@ -10,7 +19,7 @@ function NavbarT() {
       <div className="h-screen fixed ">
         <ul className="menu menu-vertical bg-base-100">
           <li className="my-1">
-            <a href="/home">
+            <Link to="/">
               <svg
                 aria-label="Home"
                 className="_ab6-"
@@ -31,10 +40,10 @@ function NavbarT() {
               </svg>
               <span className="hidden lg:block">HOME</span>
               <small className="block lg:hidden">HOME</small>
-            </a>
+            </Link>
           </li>
           <li className="my-1">
-            <a href="/home">
+            <a href="/">
               <svg
                 aria-label="Search"
                 className="_ab6-"
@@ -70,7 +79,7 @@ function NavbarT() {
             </a>
           </li>
           <li className="my-1">
-            <a href="/home">
+            <Link to="/explore">
               <svg
                 aria-label="Explore"
                 className="_ab6-"
@@ -106,7 +115,7 @@ function NavbarT() {
               </svg>
               <span className="hidden lg:block">EXPOLRE</span>
               <small className="block lg:hidden">EXPOLRE</small>
-            </a>
+            </Link>
           </li>
           <li className="my-1">
             <a href="/home">
@@ -280,7 +289,7 @@ function NavbarT() {
               <small className="block lg:hidden">PROFILE</small>
             </a>
           </li>
-          <li>
+          <>
             <div className="dropdown dropdown-top c-drop-down">
               <label className="btn btn-ghost" tabIndex="0">
                 <svg
@@ -338,12 +347,16 @@ function NavbarT() {
                 <li>
                   <a>Item 1</a>
                 </li>
-                <li>
-                  <a>Item 2</a>
-                </li>
+                {user && (
+                  <li>
+                    <Link onClick={handleSignOut} to="login">
+                      SIGN OUT
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
-          </li>
+          </>
         </ul>
       </div>
     </div>

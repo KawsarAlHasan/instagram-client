@@ -6,9 +6,13 @@
 }
 
 .c-drop-down {
-  margin: 100px 0 0 -18px;
+  margin: 100px 0 0 0px;
 }
 
 .more {
   margin: 0 0 0 10px;
+}
+
+.c-w {
+  width: 421px;
 }

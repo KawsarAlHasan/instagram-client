@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavbarBottom() {
   return (
     <div className="relative bottom-0 md:hidden">
       <ul className="menu w-full menu-horizontal bg-base-200  inset-x-0 bottom-0 fixed flex justify-around row-auto">
         <li>
-          <a href="/home">
+          <Link to="/">
             <svg
               aria-label="Home"
               className="_ab6-"
@@ -24,7 +25,7 @@ function NavbarBottom() {
                 strokeWidth="2"
               ></path>
             </svg>
-          </a>
+          </Link>
         </li>
         <li>
           <a href="/home">
