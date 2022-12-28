@@ -7,6 +7,8 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import RequireAuth from './components/RequireAuth'
+import ImagePost from './components/ImagePost'
+import UserInfo from './pages/UserInfo'
 
 function App() {
   return (
@@ -30,6 +32,14 @@ function App() {
               }
             />
             <Route
+              path="/user/:userId"
+              element={
+                <RequireAuth>
+                  <UserInfo />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/explore"
               element={
                 <RequireAuth>
@@ -41,6 +51,7 @@ function App() {
         </div>
       </div>
       <NavbarBottom />
+      <ImagePost />
     </div>
   )
 }

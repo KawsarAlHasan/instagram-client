@@ -36,7 +36,7 @@ function SocialLogin() {
     <div>
       {erroElement}
       {gLoading ? (
-        <button class="btn loading w-full">loading</button>
+        <button className="btn loading w-full">loading</button>
       ) : (
         <button
           onClick={() => signInWithGoogle()}
@@ -46,7 +46,7 @@ function SocialLogin() {
         </button>
       )}
       {fLoading ? (
-        <button class="btn loading w-full mt-3">loading</button>
+        <button className="btn loading w-full mt-3">loading</button>
       ) : (
         <button
           onClick={() => signInWithFacebook()}

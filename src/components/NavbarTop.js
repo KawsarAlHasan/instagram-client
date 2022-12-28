@@ -14,7 +14,9 @@ function NavbarT() {
   return (
     <div>
       <div className="my-8 flex justify-center">
-        <h1 className="logo font-bold fixed">LOVE❤️POST</h1>
+        <Link to="/" className="logo font-bold fixed">
+          LOVE❤️POST
+        </Link>
       </div>
       <div className="h-screen fixed ">
         <ul className="menu menu-vertical bg-base-100">
@@ -232,7 +234,7 @@ function NavbarT() {
             </a>
           </li>
           <li className="my-1">
-            <a href="/home">
+            <label for="image-post-model">
               <svg
                 aria-label="New post"
                 className="_ab6-"
@@ -276,7 +278,7 @@ function NavbarT() {
               </svg>
               <span className="hidden lg:block">CREATE</span>
               <small className="block lg:hidden">CREATE</small>
-            </a>
+            </label>
           </li>
           <li className="my-1">
             <a href="/home">

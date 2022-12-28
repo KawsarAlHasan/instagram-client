@@ -3,7 +3,7 @@ import React from 'react'
 function GetAllPost() {
   return (
     <div>
-      <div class="card w-full bg-base-100 shadow-xl mb-5">
+      <div className="card w-full bg-base-100 shadow-xl mb-5">
         <div className="flex justify-between m-4">
           <div className="flex items-center">
             <div className="avatar">
@@ -19,7 +19,7 @@ function GetAllPost() {
             <button className="">
               <svg
                 aria-label="More options"
-                class="_ab6-"
+                className="_ab6-"
                 color="#8e8e8e"
                 fill="#8e8e8e"
                 height="24"
@@ -46,7 +46,7 @@ function GetAllPost() {
           <button>
             <svg
               aria-label="Like"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -60,7 +60,7 @@ function GetAllPost() {
           <a href="/commment" className="mx-4">
             <svg
               aria-label="Comment"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -72,15 +72,15 @@ function GetAllPost() {
                 d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></path>
             </svg>
           </a>
           <button>
             <svg
               aria-label="Share Post"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -91,8 +91,8 @@ function GetAllPost() {
               <line
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 x1="22"
                 x2="9.218"
                 y1="3"
@@ -102,15 +102,15 @@ function GetAllPost() {
                 fill="none"
                 points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
           <button className="ml-60">
             <svg
               aria-label="Save"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -122,9 +122,9 @@ function GetAllPost() {
                 fill="none"
                 points="20 21 12 13.44 4 21 4 3 20 3 20 21"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
@@ -143,7 +143,7 @@ function GetAllPost() {
             <span className="mt-3 ml-3">
               <svg
                 aria-label="Emoji"
-                class="_ab6-"
+                className="_ab6-"
                 color="#262626"
                 fill="#262626"
                 height="24"
@@ -157,13 +157,13 @@ function GetAllPost() {
             <input
               type="text"
               placeholder="add a comment.."
-              class="input w-80"
+              className="input w-80"
             />
             <span className="btn btn-ghost ">POST</span>
           </div>
         </div>
       </div>
-      <div class="card w-full bg-base-100 shadow-xl mb-5">
+      <div className="card w-full bg-base-100 shadow-xl mb-5">
         <div className="flex justify-between m-4">
           <div className="flex items-center">
             <div className="avatar">
@@ -179,7 +179,7 @@ function GetAllPost() {
             <button className="">
               <svg
                 aria-label="More options"
-                class="_ab6-"
+                className="_ab6-"
                 color="#8e8e8e"
                 fill="#8e8e8e"
                 height="24"
@@ -206,7 +206,7 @@ function GetAllPost() {
           <button>
             <svg
               aria-label="Like"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -220,7 +220,7 @@ function GetAllPost() {
           <a href="/commment" className="mx-4">
             <svg
               aria-label="Comment"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -232,15 +232,15 @@ function GetAllPost() {
                 d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></path>
             </svg>
           </a>
           <button>
             <svg
               aria-label="Share Post"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -251,8 +251,8 @@ function GetAllPost() {
               <line
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 x1="22"
                 x2="9.218"
                 y1="3"
@@ -262,15 +262,15 @@ function GetAllPost() {
                 fill="none"
                 points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
           <button className="ml-60">
             <svg
               aria-label="Save"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -282,9 +282,9 @@ function GetAllPost() {
                 fill="none"
                 points="20 21 12 13.44 4 21 4 3 20 3 20 21"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
@@ -298,20 +298,20 @@ function GetAllPost() {
           <a className="ml-4 opacity-50" href="/comments">
             View 1 comment
           </a>
-          <div class="form-control mt-2 ml-4">
-            <label class="input-group">
+          <div className="form-control mt-2 ml-4">
+            <label className="input-group">
               <span>Emoji</span>
               <input
                 type="text"
                 placeholder="add a comment.."
-                class="input input-bordered btn-sm"
+                className="input input-bordered btn-sm"
               />
               <span className="btn btn-primary btn-sm">POST</span>
             </label>
           </div>
         </div>
       </div>
-      <div class="card w-full bg-base-100 shadow-xl mb-5">
+      <div className="card w-full bg-base-100 shadow-xl mb-5">
         <div className="flex justify-between m-4">
           <div className="flex items-center">
             <div className="avatar">
@@ -327,7 +327,7 @@ function GetAllPost() {
             <button className="">
               <svg
                 aria-label="More options"
-                class="_ab6-"
+                className="_ab6-"
                 color="#8e8e8e"
                 fill="#8e8e8e"
                 height="24"
@@ -354,7 +354,7 @@ function GetAllPost() {
           <button>
             <svg
               aria-label="Like"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -368,7 +368,7 @@ function GetAllPost() {
           <a href="/commment" className="mx-4">
             <svg
               aria-label="Comment"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -380,15 +380,15 @@ function GetAllPost() {
                 d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></path>
             </svg>
           </a>
           <button>
             <svg
               aria-label="Share Post"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -399,8 +399,8 @@ function GetAllPost() {
               <line
                 fill="none"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 x1="22"
                 x2="9.218"
                 y1="3"
@@ -410,15 +410,15 @@ function GetAllPost() {
                 fill="none"
                 points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
                 stroke="currentColor"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
           <button className="ml-60">
             <svg
               aria-label="Save"
-              class="_ab6-"
+              className="_ab6-"
               color="#262626"
               fill="#262626"
               height="24"
@@ -430,9 +430,9 @@ function GetAllPost() {
                 fill="none"
                 points="20 21 12 13.44 4 21 4 3 20 3 20 21"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               ></polygon>
             </svg>
           </button>
@@ -446,13 +446,13 @@ function GetAllPost() {
           <a className="ml-4 opacity-50" href="/comments">
             View 1 comment
           </a>
-          <div class="form-control mt-2 ml-4">
-            <label class="input-group">
+          <div className="form-control mt-2 ml-4">
+            <label className="input-group">
               <span>Emoji</span>
               <input
                 type="text"
                 placeholder="add a comment.."
-                class="input input-bordered btn-sm"
+                className="input input-bordered btn-sm"
               />
               <span className="btn btn-primary btn-sm">POST</span>
             </label>
