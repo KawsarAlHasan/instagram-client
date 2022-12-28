@@ -7,6 +7,7 @@ import {
 } from 'react-firebase-hooks/auth'
 import auth from '../firebase.init'
 import { useNavigate } from 'react-router-dom'
+import useToken from '../hooks/useToken'
 
 function SocialLogin() {
   const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(
@@ -14,8 +15,9 @@ function SocialLogin() {
   )
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth)
   const navigate = useNavigate()
+  const [token] = useToken(gUser || fUser)
 
-  if (gUser || fUser) {
+  if (token) {
     navigate('/')
   }
 

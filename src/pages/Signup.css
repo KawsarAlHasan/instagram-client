@@ -1,0 +1,23 @@
+.signup-profile-pic__container {
+  width: 60px;
+  height: 60px;
+  margin: 7px auto -15px auto;
+  position: relative;
+}
+
+.signup-profile-pic {
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  object-fit: cover;
+  height: 60px;
+}
+
+.add-picture-icon {
+  position: absolute;
+  bottom: -5px;
+  right: 3px;
+  color: green;
+  cursor: pointer;
+  z-index: 99;
+}
