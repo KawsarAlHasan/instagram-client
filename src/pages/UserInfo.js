@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useParams } from 'react-router-dom'
@@ -15,6 +16,28 @@ function UserInfo() {
       .then((res) => res.json())
       .then((data) => setUserInfo(data))
   }, [])
+
+  const [myImagePost, setMyImagePost] = useState([])
+  useEffect(() => {
+    const getMyImagePost = async () => {
+      const email = user.email
+      const url = `http://localhost:4000/post/myimage?email=${email}`
+      const { data } = await axios.get(url)
+      setMyImagePost(data)
+    }
+    getMyImagePost()
+  }, [user])
+
+  const [otherImagePost, setOtherImagePost] = useState([])
+  useEffect(() => {
+    const getMyImagePost = async () => {
+      const email = userInfo.email
+      const url = `http://localhost:4000/post/myimage?email=${email}`
+      const { data } = await axios.get(url)
+      setOtherImagePost(data)
+    }
+    getMyImagePost()
+  }, [userInfo])
 
   return (
     <div>
@@ -36,9 +59,8 @@ function UserInfo() {
                     Edit <span className="hidden lg:block"> Profile</span>
                   </button>
                   <svg
-                    className="sm:mt-2 lg:mt-3 xl:mt-4"
+                    className="_ab6- sm:mt-2 lg:mt-3 xl:mt-4"
                     aria-label="Options"
-                    class="_ab6-"
                     color="#262626"
                     fill="#262626"
                     height="24"
@@ -101,11 +123,11 @@ function UserInfo() {
           </div>
           <div className="divider md:mt-10"></div>
           <div className="grid justify-items-center mt-[-20px] ">
-            <div class="tabs">
-              <a class="tab tab-bordered tab-active">
+            <div className="tabs">
+              <a className="tab tab-bordered tab-active">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#262626"
                   fill="#262626"
                   height="12"
@@ -171,10 +193,10 @@ function UserInfo() {
                 </svg>
                 POSTS
               </a>
-              <a class="tab tab-bordered">
+              <a className="tab tab-bordered">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#8e8e8e"
                   fill="#8e8e8e"
                   height="12"
@@ -224,15 +246,15 @@ function UserInfo() {
                   ></path>
                   <path
                     d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   ></path>
                 </svg>{' '}
                 REELS
               </a>
-              <a class="tab tab-bordered">
+              <a className="tab tab-bordered">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#8e8e8e"
                   fill="#8e8e8e"
                   height="12"
@@ -256,36 +278,15 @@ function UserInfo() {
 
           {/* Post Photos */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5 mt-7 justify-items-center">
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
+            {myImagePost.map((myImage) => (
+              <div>
+                <img
+                  className="mask mask-square w-[293px] h-[293px]"
+                  src={myImage.postImageUrl}
+                  alt="post"
+                />
+              </div>
+            ))}
           </div>
         </div>
       ) : (
@@ -345,11 +346,11 @@ function UserInfo() {
           </div>
           <div className="divider md:mt-10"></div>
           <div className="grid justify-items-center mt-[-20px] ">
-            <div class="tabs">
-              <a class="tab tab-bordered tab-active">
+            <div className="tabs">
+              <a className="tab tab-bordered tab-active">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#262626"
                   fill="#262626"
                   height="12"
@@ -415,10 +416,10 @@ function UserInfo() {
                 </svg>
                 POSTS
               </a>
-              <a class="tab tab-bordered">
+              <a className="tab tab-bordered">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#8e8e8e"
                   fill="#8e8e8e"
                   height="12"
@@ -468,15 +469,15 @@ function UserInfo() {
                   ></path>
                   <path
                     d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   ></path>
                 </svg>{' '}
                 REELS
               </a>
-              <a class="tab tab-bordered">
+              <a className="tab tab-bordered">
                 <svg
                   aria-label=""
-                  class="_ab6-"
+                  className="_ab6-"
                   color="#8e8e8e"
                   fill="#8e8e8e"
                   height="12"
@@ -500,36 +501,14 @@ function UserInfo() {
 
           {/* Post Photos */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5 mt-7 justify-items-center">
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
-            <div>
-              <img
-                class="mask mask-square w-[293px] h-[293px]"
-                src="https://placeimg.com/160/160/arch"
-              />
-            </div>
+            {otherImagePost.map((otherimage) => (
+              <div>
+                <img
+                  className="mask mask-square w-[293px] h-[293px]"
+                  src={otherimage.postImageUrl}
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}
