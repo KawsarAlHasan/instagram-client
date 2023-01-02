@@ -1,12 +1,20 @@
 import { signOut } from 'firebase/auth'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import auth from '../firebase.init'
+import useMDUsers from '../hooks/useUsers'
 import './Navbar.css'
 
 function NavbarT() {
-  const [user] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
+
+  const [mdUsers, isLoading] = useMDUsers()
+
+  const navigate = useNavigate()
+  const userDetails = (id) => {
+    navigate(`/user/${id}`)
+  }
 
   const handleSignOut = () => {
     signOut(auth)
@@ -281,15 +289,33 @@ function NavbarT() {
             </label>
           </li>
           <li className="my-1">
-            <a href="/home">
+            {isLoading || loading ? (
               <div className="avatar placeholder">
                 <div className="bg-neutral-focus text-neutral-content rounded-full w-7">
-                  <span className="text-3xl">K</span>
+                  <span className="text-3xl">P</span>
                 </div>
               </div>
-              <span className="hidden lg:block">PROFILE</span>
-              <small className="block lg:hidden">PROFILE</small>
-            </a>
+            ) : (
+              mdUsers.map(
+                (mUser) =>
+                  mUser.email === user?.email && (
+                    <div
+                      key={mUser._id}
+                      href="/home"
+                      className="cursor-pointer"
+                      onClick={() => userDetails(mUser._id)}
+                    >
+                      <div className="avatar placeholder">
+                        <div className="bg-neutral-focus text-neutral-content rounded-full w-7">
+                          <img alt="people" src={user?.photoURL} />
+                        </div>
+                      </div>
+                      <span className="hidden lg:block">PROFILE</span>
+                      <small className="block lg:hidden">PROFILE</small>
+                    </div>
+                  ),
+              )
+            )}
           </li>
           <>
             <div className="dropdown dropdown-top c-drop-down">

@@ -10,7 +10,7 @@ function GetStory() {
   const [imagePost, setImagePost] = useState([])
   useEffect(() => {
     setIsLoadingPost(true)
-    fetch('http://localhost:4000/post/images')
+    fetch('https://love-post-backend.onrender.com/post/images')
       .then((res) => res.json())
       .then((data) => {
         setImagePost(data)
@@ -36,7 +36,7 @@ function GetStory() {
             imagePost.map(
               (imgPost) =>
                 mdUser.email === imgPost.email && (
-                  <div className="carousel-item">
+                  <div className="carousel-item" key={mdUser._id}>
                     <div className="grid justify-items-center">
                       <div className="avatar">
                         <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

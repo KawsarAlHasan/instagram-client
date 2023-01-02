@@ -7,7 +7,7 @@ const useMDUsers = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('http://localhost:4000/users')
+    fetch('https://love-post-backend.onrender.com/users')
       .then((res) => res.json())
       .then((data) => {
         setMdUsers(data)

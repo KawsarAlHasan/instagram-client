@@ -10,7 +10,7 @@ function GetAllPost() {
   const [imagePost, setImagePost] = useState([])
   useEffect(() => {
     setIsLoadingPost(true)
-    fetch('http://localhost:4000/post/images')
+    fetch('https://love-post-backend.onrender.com/post/images')
       .then((res) => res.json())
       .then((data) => {
         setImagePost(data)
@@ -33,9 +33,9 @@ function GetAllPost() {
         <Loading />
       ) : (
         mdUsers.map((mdUser) => (
-          <div>
-            {imagePost.map((imgPost) => (
-              <div>
+          <div key={mdUser._id}>
+            {imagePost.slice(0, 100).map((imgPost) => (
+              <div key={imgPost._id}>
                 {mdUser.email === imgPost.email && (
                   <div className="card w-full bg-base-100 shadow-2xl mb-5">
                     <div className="flex justify-between m-4">

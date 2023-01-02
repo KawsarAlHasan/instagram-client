@@ -13,7 +13,7 @@ const useToken = (user) => {
       photoURL: photoURL,
     }
     if (email) {
-      fetch(`http://localhost:4000/user/${email}`, {
+      fetch(`https://love-post-backend.onrender.com/user/${email}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

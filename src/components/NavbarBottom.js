@@ -1,7 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { Link, useNavigate } from 'react-router-dom'
+import auth from '../firebase.init'
+import useMDUsers from '../hooks/useUsers'
+import Loading from './Loading'
 
 function NavbarBottom() {
+  const [user, loading] = useAuthState(auth)
+
+  const [mdUsers, isLoading] = useMDUsers()
+
+  const navigate = useNavigate()
+  const userDetails = (id) => {
+    navigate(`/user/${id}`)
+  }
   return (
     <div className="relative bottom-0 md:hidden">
       <ul className="menu w-full menu-horizontal bg-base-200  inset-x-0 bottom-0 fixed flex justify-around row-auto">
@@ -124,7 +136,7 @@ function NavbarBottom() {
           </a>
         </li>
         <li>
-          <a href="/home">
+          <label for="image-post-model">
             <svg
               aria-label="New post"
               className="_ab6-"
@@ -166,7 +178,7 @@ function NavbarBottom() {
                 y2="17.455"
               ></line>
             </svg>
-          </a>
+          </label>
         </li>
         <li>
           <a href="/home">
@@ -201,13 +213,31 @@ function NavbarBottom() {
           </a>
         </li>
         <li>
-          <a href="/home">
+          {isLoading || loading ? (
             <div className="avatar placeholder">
               <div className="bg-neutral-focus text-neutral-content rounded-full w-7">
-                <span className="text-3xl">K</span>
+                <span className="text-3xl">P</span>
               </div>
             </div>
-          </a>
+          ) : (
+            mdUsers.map(
+              (mUser) =>
+                mUser.email === user.email && (
+                  <div
+                    key={mUser._id}
+                    href="/home"
+                    className="cursor-pointer"
+                    onClick={() => userDetails(mUser._id)}
+                  >
+                    <div className="avatar placeholder">
+                      <div className="bg-neutral-focus text-neutral-content rounded-full w-7">
+                        <img alt="people" src={user.photoURL} />
+                      </div>
+                    </div>
+                  </div>
+                ),
+            )
+          )}
         </li>
       </ul>
     </div>

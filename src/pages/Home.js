@@ -1,6 +1,7 @@
 import React from 'react'
 import GetAllPost from '../components/GetAllPost'
 import GetStory from '../components/GetStory'
+import NavbarBottom from '../components/NavbarBottom'
 import RightSide from '../components/RightSide'
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
           <RightSide />
         </div>
       </div>
+      <NavbarBottom />
     </div>
   )
 }

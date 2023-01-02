@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate, useParams } from 'react-router-dom'
+import NavbarBottom from '../components/NavbarBottom'
 import auth from '../firebase.init'
 
 function UserInfo() {
@@ -11,7 +12,7 @@ function UserInfo() {
   const [userInfo, setUserInfo] = useState({})
 
   useEffect(() => {
-    const url = `http://localhost:4000/user/${userId}`
+    const url = `https://love-post-backend.onrender.com/user/${userId}`
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUserInfo(data))
@@ -21,7 +22,7 @@ function UserInfo() {
   useEffect(() => {
     const getMyImagePost = async () => {
       const email = user.email
-      const url = `http://localhost:4000/post/myimage?email=${email}`
+      const url = `https://love-post-backend.onrender.com/post/myimage?email=${email}`
       const { data } = await axios.get(url)
       setMyImagePost(data)
     }
@@ -32,7 +33,7 @@ function UserInfo() {
   useEffect(() => {
     const getMyImagePost = async () => {
       const email = userInfo.email
-      const url = `http://localhost:4000/post/myimage?email=${email}`
+      const url = `https://love-post-backend.onrender.com/post/myimage?email=${email}`
       const { data } = await axios.get(url)
       setOtherImagePost(data)
     }
@@ -284,7 +285,7 @@ function UserInfo() {
           {/* Post Photos */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-5 mt-7 justify-items-center">
             {myImagePost.map((myImage) => (
-              <div>
+              <div key={myImage._id}>
                 <img
                   onClick={() => postImageDetails(myImage._id)}
                   className="mask mask-square cursor-pointer w-[293px] h-[293px]"
@@ -519,6 +520,7 @@ function UserInfo() {
           </div>
         </div>
       )}
+      <NavbarBottom />
     </div>
   )
 }

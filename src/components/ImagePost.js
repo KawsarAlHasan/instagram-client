@@ -8,11 +8,7 @@ import Loading from './Loading'
 import { toast } from 'react-toastify'
 
 function ImagePost() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
   // image upload states
   const [image, setImage] = useState(null)
@@ -57,7 +53,7 @@ function ImagePost() {
   const onSubmit = async (data) => {
     if (!image) return alert('Please upload your profile picture')
     const postImageUrl = await uploadImage(image)
-    fetch('http://localhost:4000/post/image', {
+    fetch('https://love-post-backend.onrender.com/post/image', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -91,7 +87,7 @@ function ImagePost() {
             ✕
           </label>
           <h1 className="text-center text-3xl font-bold">Create new post</h1>
-          {isLoading || loading ? (
+          {isLoading || loading || uploadingImg ? (
             <Loading />
           ) : (
             mdUsers.map((imgPost) => (

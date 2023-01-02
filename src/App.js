@@ -1,6 +1,5 @@
 import './App.css'
 import NavbarTop from './components/NavbarTop'
-import NavbarBottom from './components/NavbarBottom'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
 import { Route, Routes } from 'react-router-dom'
@@ -32,7 +31,6 @@ function App() {
               element={
                 <RequireAuth>
                   <Home />
-                  <ImagePost />
                 </RequireAuth>
               }
             />
@@ -66,8 +64,6 @@ function App() {
           </Routes>
         </div>
       </div>
-      <NavbarBottom />
-
       <ToastContainer />
     </div>
   )

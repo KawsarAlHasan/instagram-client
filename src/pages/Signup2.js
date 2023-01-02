@@ -13,7 +13,7 @@ function Signup2() {
   //   const { handleSubmit } = useForm()
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:4000/user/${user.email}`, {
+    fetch(`https://love-post-backend.onrender.com/user/${user.email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -31,14 +31,14 @@ function Signup2() {
   }
   return (
     <div className="">
-      <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content flex-row">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-row">
           <img
             src={signup2}
-            class="w-[50%] rounded-lg shadow-2xl hidden md:block "
+            className="w-[50%] rounded-lg shadow-2xl hidden md:block "
           />
           <div>
-            <h1 class="text-2xl font-bold">condition of Love❤️Post</h1>
+            <h1 className="text-2xl font-bold">condition of Love❤️Post</h1>
             <p className="py-4 text-lg">
               Love❤️Post is a social media. Here you don't post obscene pictures
               and don't write bad words in captions. If you post obscene
@@ -46,7 +46,7 @@ function Signup2() {
               account. <br />
               If you agree with my terms then click on 'I agree' button
             </p>
-            <div class="card-actions justify-center">
+            <div className="card-actions justify-center">
               {loading ? (
                 <button className="btn loading">Prossesing</button>
               ) : (
