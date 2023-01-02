@@ -7,8 +7,11 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import RequireAuth from './components/RequireAuth'
-import ImagePost from './components/ImagePost'
 import UserInfo from './pages/UserInfo'
+import PostDetails from './components/PostDetails'
+import ImagePost from './components/ImagePost'
+import { ToastContainer } from 'react-toastify'
+import Signup2 from './pages/Signup2'
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="signup2" element={<Signup2 />} />
       </Routes>
       <div className="grid grid-cols-12">
         <div className="md:col-span-2 hidden md:block">
@@ -28,6 +32,7 @@ function App() {
               element={
                 <RequireAuth>
                   <Home />
+                  <ImagePost />
                 </RequireAuth>
               }
             />
@@ -36,6 +41,16 @@ function App() {
               element={
                 <RequireAuth>
                   <UserInfo />
+                  <ImagePost />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/post/image/:postId"
+              element={
+                <RequireAuth>
+                  <PostDetails />
+                  <ImagePost />
                 </RequireAuth>
               }
             />
@@ -44,6 +59,7 @@ function App() {
               element={
                 <RequireAuth>
                   <Explore />
+                  <ImagePost />
                 </RequireAuth>
               }
             />
@@ -51,7 +67,8 @@ function App() {
         </div>
       </div>
       <NavbarBottom />
-      <ImagePost />
+
+      <ToastContainer />
     </div>
   )
 }

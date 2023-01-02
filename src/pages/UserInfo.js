@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import auth from '../firebase.init'
 
 function UserInfo() {
@@ -38,6 +38,11 @@ function UserInfo() {
     }
     getMyImagePost()
   }, [userInfo])
+
+  const navigate = useNavigate()
+  const postImageDetails = (id) => {
+    navigate(`/post/image/${id}`)
+  }
 
   return (
     <div>
@@ -281,7 +286,8 @@ function UserInfo() {
             {myImagePost.map((myImage) => (
               <div>
                 <img
-                  className="mask mask-square w-[293px] h-[293px]"
+                  onClick={() => postImageDetails(myImage._id)}
+                  className="mask mask-square cursor-pointer w-[293px] h-[293px]"
                   src={myImage.postImageUrl}
                   alt="post"
                 />
@@ -504,7 +510,8 @@ function UserInfo() {
             {otherImagePost.map((otherimage) => (
               <div>
                 <img
-                  className="mask mask-square w-[293px] h-[293px]"
+                  onClick={() => postImageDetails(otherimage._id)}
+                  className="mask mask-square cursor-pointer w-[293px] h-[293px]"
                   src={otherimage.postImageUrl}
                 />
               </div>

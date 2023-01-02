@@ -3,6 +3,9 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import auth from '../firebase.init'
 import imageIcon from '../assest/logo/picture.svg'
+import useMDUsers from '../hooks/useUsers'
+import Loading from './Loading'
+import { toast } from 'react-toastify'
 
 function ImagePost() {
   const {
@@ -48,7 +51,8 @@ function ImagePost() {
     }
   }
 
-  const [user] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
+  const [mdUsers, isLoading] = useMDUsers()
 
   const onSubmit = async (data) => {
     if (!image) return alert('Please upload your profile picture')
@@ -59,6 +63,9 @@ function ImagePost() {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
+        displayName: data.displayName,
+        photoURL: data.photoURL,
+        userId: data.userId,
         caption: data.caption,
         email: user.email,
         postImageUrl: postImageUrl,
@@ -68,6 +75,7 @@ function ImagePost() {
       .then((result) => {
         console.log(result)
         window.location.reload(false)
+        toast('Image Post Successfully!')
       })
     console.log('data', postImageUrl)
   }
@@ -83,38 +91,65 @@ function ImagePost() {
             ✕
           </label>
           <h1 className="text-center text-3xl font-bold">Create new post</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <input
-                {...register('caption')}
-                type="text"
-                placeholder="Write a Caption.."
-                className="input input-bordered"
-              />
-            </div>
-            <div className="grid justify-items-center">
-              <label htmlFor="image-upload" className="cursor-pointer">
-                <i className="fa fa-camera-retro fa-5x"></i>
-              </label>
-              <input
-                type="file"
-                id="image-upload"
-                hidden
-                accept="image/png, image/jpg, image/jpeg"
-                onChange={validateImg}
-              />
-              <img
-                src={imagePreview || imageIcon}
-                alt="nobody"
-                className="mask mask-square h-96 w-[ 293px] "
-              />
-            </div>
-            <div className="form-control mt-3">
-              <button type="submit" className="btn btn-primary">
-                post
-              </button>
-            </div>
-          </form>
+          {isLoading || loading ? (
+            <Loading />
+          ) : (
+            mdUsers.map((imgPost) => (
+              <div key={imgPost._id}>
+                {user.email === imgPost.email && (
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="hidden">
+                      <input
+                        {...register('displayName')}
+                        type="text"
+                        defaultValue={imgPost.displayName}
+                      />
+                      <input
+                        {...register('photoURL')}
+                        type="text"
+                        defaultValue={imgPost.photoURL}
+                      />
+                      <input
+                        {...register('userId')}
+                        type="text"
+                        defaultValue={imgPost._id}
+                      />
+                    </div>
+                    <div className="form-control">
+                      <input
+                        {...register('caption')}
+                        type="text"
+                        placeholder="Write a Caption.."
+                        className="input input-bordered"
+                      />
+                    </div>
+                    <div className="grid justify-items-center">
+                      <label htmlFor="image-upload" className="cursor-pointer">
+                        <i className="fa fa-camera-retro fa-5x"></i>
+                      </label>
+                      <input
+                        type="file"
+                        id="image-upload"
+                        hidden
+                        accept="image/png, image/jpg, image/jpeg"
+                        onChange={validateImg}
+                      />
+                      <img
+                        src={imagePreview || imageIcon}
+                        alt="nobody"
+                        className="mask mask-square h-96 w-[ 293px] "
+                      />
+                    </div>
+                    <div className="form-control mt-3">
+                      <button type="submit" className="btn btn-primary">
+                        post
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

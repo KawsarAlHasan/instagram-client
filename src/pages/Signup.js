@@ -68,7 +68,6 @@ function Siginup() {
     const url = await uploadImage(image)
     await createUserWithEmailAndPassword(data.email, data.password)
     await updateProfile({ displayName: data.name, photoURL: url })
-    console.log(data)
   }
 
   let erroElement
@@ -84,27 +83,9 @@ function Siginup() {
   }
 
   const Navigate = useNavigate()
-  const email = user?.user?.email
-  const displayName = user?.user?.displayName
-  const photoURL = user?.user?.photoURL
 
-  const currentUser = {
-    email: email,
-    displayName: displayName,
-    photoURL: photoURL,
-  }
-  if (email) {
-    fetch(`http://localhost:4000/user/${email}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(currentUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('data', data)
-      })
+  if (user) {
+    Navigate('/signup2')
   }
 
   return (
