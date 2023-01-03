@@ -31,6 +31,7 @@ function App() {
               element={
                 <RequireAuth>
                   <Home />
+                  <ImagePost />
                 </RequireAuth>
               }
             />
